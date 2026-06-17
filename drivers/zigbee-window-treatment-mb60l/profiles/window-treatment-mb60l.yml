@@ -1,0 +1,24 @@
+name: window-treatment-mb60l
+components:
+- id: main
+  capabilities:
+  - id: windowShade
+    version: 1
+  - id: windowShadeLevel
+    version: 1
+  - id: windowShadePreset
+    version: 1
+  - id: battery
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: Blind
+preferences:
+  - name: "reverse"
+    title: "Reverse motor direction"
+    description: "Flip the open/close direction of the motor."
+    required: false
+    preferenceType: boolean
+    definition:
+      default: false

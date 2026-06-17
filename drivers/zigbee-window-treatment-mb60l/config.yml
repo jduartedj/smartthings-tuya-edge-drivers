@@ -1,0 +1,5 @@
+name: 'Zigbee Window Treatment MB60L'
+packageKey: 'zigbee-window-treatment-mb60l'
+permissions:
+  zigbee: {}
+description: "Tuya EF00 roller-blind motor (Manhot MB60L-ZG-ZT-TY) with full position control"

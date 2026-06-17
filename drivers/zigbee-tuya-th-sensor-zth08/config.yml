@@ -1,0 +1,5 @@
+name: 'Zigbee Tuya TH Sensor ZTH08'
+packageKey: 'zigbee-tuya-th-sensor-zth08'
+permissions:
+  zigbee: {}
+description: "Tuya EF00 temperature/humidity LCD sensor (ZTH08) with on-device clock time-sync"

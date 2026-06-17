@@ -1,0 +1,6 @@
+zigbeeManufacturer:
+  - id: "_TZE284_2gi1hy8s/TS0601"
+    deviceLabel: Manhot MB60L Smart Blind
+    manufacturer: _TZE284_2gi1hy8s
+    model: TS0601
+    deviceProfileName: window-treatment-mb60l

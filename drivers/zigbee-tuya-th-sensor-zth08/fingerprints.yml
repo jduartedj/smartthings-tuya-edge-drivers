@@ -1,0 +1,6 @@
+zigbeeManufacturer:
+  - id: "_TZE284_d7lpruvi/TS0601"
+    deviceLabel: Tuya Temp Humidity Sensor
+    manufacturer: _TZE284_d7lpruvi
+    model: TS0601
+    deviceProfileName: tuya-th-sensor

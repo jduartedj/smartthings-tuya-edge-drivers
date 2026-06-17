@@ -1,0 +1,12 @@
+# SmartThings Edge driver build artifacts
+*.zip
+
+# Lua libraries (provided by the SmartThings hub runtime / CLI at build time)
+lua_libs/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
