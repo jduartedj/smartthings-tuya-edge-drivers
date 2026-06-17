@@ -1,4 +1,11 @@
+<p align="center">
+  <img src="docs/social-preview.png" alt="SmartThings Tuya Edge Drivers" width="100%">
+</p>
+
 # SmartThings Tuya Edge Drivers
+
+[![Lint](https://github.com/jduartedj/smartthings-tuya-edge-drivers/actions/workflows/lint.yml/badge.svg)](https://github.com/jduartedj/smartthings-tuya-edge-drivers/actions/workflows/lint.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 Custom [SmartThings Edge](https://developer.smartthings.com/docs/devices/hub-connected/get-started) drivers that make a couple of **Tuya Zigbee** devices *fully* work — features the generic, off‑the‑shelf community drivers don't deliver.
 
