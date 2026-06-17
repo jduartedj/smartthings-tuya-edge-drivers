@@ -35,8 +35,6 @@ local DP_TEMPERATURE_UNIT = 9
 local TIME_SYNC_INTERVAL = 3600 -- seconds
 local TIME_SYNC_TIMER = "_timeSyncTimer"
 
-local SeqNum = 0
-
 ------------------------- low-level send helpers -------------------------
 
 -- Send a cluster-specific command on the Tuya EF00 cluster with a raw body.
