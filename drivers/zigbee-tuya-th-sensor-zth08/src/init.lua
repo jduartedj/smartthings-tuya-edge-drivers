@@ -32,8 +32,10 @@ local DP_HUMIDITY = 2
 local DP_BATTERY = 4
 local DP_TEMPERATURE_UNIT = 9
 
-local TIME_SYNC_INTERVAL = 3600 -- seconds
+local TIME_SYNC_INTERVAL = 1800 -- periodic timer (seconds)
 local TIME_SYNC_TIMER = "_timeSyncTimer"
+local TIME_SYNC_THROTTLE = 1200 -- min seconds between report-triggered syncs
+local LAST_SYNC_KEY = "_lastTimeSync"
 
 ------------------------- low-level send helpers -------------------------
 
@@ -78,8 +80,18 @@ local function send_time_sync(device)
   -- body: [payloadSize = 8, UINT16 little-endian][UTC epoch, 4B big-endian][local epoch, 4B big-endian]
   local body = string.char(0x08, 0x00) .. uint32_be(utc_time) .. uint32_be(local_time)
   send_tuya_raw(device, TUYA_CMD_MCU_SYNC_TIME, body)
+  device:set_field(LAST_SYNC_KEY, utc_time)
   log.info(string.format("ZTH08 time sync sent: utc=%d local=%d (offset=%+dh)",
     utc_time, local_time, (local_time - utc_time) // 3600))
+end
+
+-- Keep the device clock fresh by re-syncing on its own reports, throttled so we
+-- don't transmit on every datapoint.
+local function maybe_sync_time(device)
+  local last = device:get_field(LAST_SYNC_KEY)
+  if last == nil or (os.time() - last) >= TIME_SYNC_THROTTLE then
+    send_time_sync(device)
+  end
 end
 
 local function send_gateway_status(device)
@@ -95,6 +107,7 @@ local function tuya_dp_handler(driver, device, zb_rx)
   local len = string.unpack(">I2", body:sub(5, 6))
   local raw = string.unpack(">I" .. len, body:sub(7))
   log.debug(string.format("ZTH08 dp=%d len=%d value=%d", dp, len, raw))
+  maybe_sync_time(device)
 
   if dp == DP_TEMPERATURE then
     -- Signed value, tenths of a degree Celsius.
